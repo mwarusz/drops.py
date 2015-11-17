@@ -52,7 +52,7 @@ prsr.add_argument('--nt',        type=int,   required=(dflts.nt is None), defaul
 
 ## lgrngn options
 prsr_lgr = sprsr.add_parser('lgrngn')
-prsr_lgr.add_argument('--sd_conc',   type=float, required=(dflts.sd_conc is None), default=dflts.sd_conc, help='number of super droplets')
+prsr_lgr.add_argument('--sd_conc',   type=int, required=(dflts.sd_conc is None), default=dflts.sd_conc, help='number of super droplets')
 prsr_lgr.add_argument('--kappa',     type=float, required=(dflts.kappa   is None), default=dflts.kappa,   help='aerosol hygroscopicity parameter [1]')
 prsr_lgr.add_argument('--n_tot',     type=float, required=(dflts.n_tot   is None), default=dflts.n_tot,   help='aerosol concentration @STP [m-3]',         nargs='+')
 prsr_lgr.add_argument('--meanr',     type=float, required=(dflts.meanr   is None), default=dflts.meanr,   help='aerosol mean dry radius [m]',              nargs='+')
