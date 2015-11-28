@@ -8,6 +8,7 @@ class rhs_lgrngn:
   def __init__(self, dt, sd_conc, dry_distros, chem_gas = None):
     self.opts_init = libcl.lgrngn.opts_init_t()
     self.opts_init.sd_conc = sd_conc
+    self.opts_init.n_sd_max = sd_conc
     self.opts_init.dry_distros = dry_distros
     self.opts_init.dt = dt
     self.dt = dt # as it is used from parcel.py :(
