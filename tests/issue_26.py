@@ -13,9 +13,9 @@ try:
       " --gstdv 1.4745 1.4466 --cloud_r_min 2e-6",
       shell=True
     )
+    print out
 except subprocess.CalledProcessError as e:
     print e.output
-    print out
 
 f = open(outdir + "/stats.gpi")
 for line in f:

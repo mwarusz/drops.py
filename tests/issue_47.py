@@ -12,6 +12,6 @@ try:
       shell=True,
       stderr=subprocess.STDOUT
     )
+    print out
 except subprocess.CalledProcessError as e:
     print e.output
-    print out
