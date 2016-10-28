@@ -1,9 +1,8 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 # note: before "make install" it uses local one (that's why the directory is named drops_py),
 #       afterwards - the system one is used (the one installed by "make install"
 import sys
-sys.path.insert(0, "/home/mwarusz/repos//libcloudphxx/build/bindings/python/")
 
 from drops_py import rhs_lgrngn, parcel, output, distros
 from drops_py.defaults import defaults
