@@ -1,7 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 
 # note: before "make install" it uses local one (that's why the directory is named drops_py),
 #       afterwards - the system one is used (the one installed by "make install"
+import sys
+sys.path.insert(0, "/home/mwarusz/repos//libcloudphxx/build/bindings/python/")
+
 from drops_py import rhs_lgrngn, parcel, output, distros
 from drops_py.defaults import defaults
 from drops_py.defaults_Ghan_et_al_1998 import defaults_Ghan_et_al_1998
@@ -11,7 +14,8 @@ from argparse import ArgumentParser
 import libcloudphxx.common as libcom 
 import libcloudphxx as libcl
 import numpy as np
- 
+
+print "drops.py A"
 
 # just a few constants not repeat them below
 desc = 'drops.py - a parcel model based on libcloudph++'
@@ -70,6 +74,8 @@ prsr_b2m = sprsr.add_parser('blk_2m')
 
 args = prsr.parse_args()
 
+print "drops.py B"
+
 # computing state variables
 p_v = np.array([args.RH * libcom.p_vs(args.T)])
 p_d = args.p - p_v
@@ -85,6 +91,7 @@ if args.chem_SO2 + args.chem_O3 + args.chem_H2O2 > 0:
     libcl.lgrngn.chem_species_t.H2O2 : args.chem_H2O2
   }
 
+print "drops.py C"
 # performing the simulation
 rhs = rhs_lgrngn.rhs_lgrngn(
   args.dt, 
@@ -94,6 +101,7 @@ rhs = rhs_lgrngn.rhs_lgrngn(
   },
   chem_gas = chem_gas
 )
+print "drops.py D"
 out = output.output_lgr(
   args.outdir, 
   args.dt * np.arange(0, args.nt+1, args.outfreq), # nt+1 to include nt in the time_out, 
@@ -101,9 +109,11 @@ out = output.output_lgr(
   cloud_nbins = args.cloud_n_bin,
   chem_sp = []
 ) 
+print "drops.py E"
 stats = {}
 parcel.parcel(p_d, th_d, r_v, args.w, args.nt, args.outfreq, out, rhs, stats=stats)
 
+print "drops.py F"
 # outputting a setup.gpi file
 out = open(args.outdir + '/setup.gpi', mode='w')
 for key, val in vars(args).iteritems():
