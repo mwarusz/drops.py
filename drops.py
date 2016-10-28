@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 # note: before "make install" it uses local one (that's why the directory is named drops_py),
 #       afterwards - the system one is used (the one installed by "make install"
