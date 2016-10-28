@@ -37,6 +37,8 @@ def parcel(p_d, th_d, r_v, w, nt, outfreq, out, rhs, stats=None):
     r_v  += rhs.dt * dot_rv
     rhod = eq.rhod_fun(p_d, th_d)
 
+    print "drops.py.iter: ", it
+
     # doing diagnostics / output
     out.diag(
       rhs.prtcls, 
